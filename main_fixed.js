@@ -52,7 +52,7 @@ class Product{
         return listProduct.find(product => product.ID == idProduct);
     }
 
-console.log(filterProductById1(listProduct,254435));
+// console.log(filterProductById1(listProduct,343232));
 
     /**
      * get product name with match id using for loop
@@ -61,13 +61,13 @@ console.log(filterProductById1(listProduct,254435));
      * @returns 
      */
     function filterProductById2 (listProduct, idProduct){
-        let result = "no match" ;
+        let result = null ;
         for (let p of listProduct) {
             p.ID == idProduct? (result = p.name ) : "" ; 
         }
         return result;
     }
-console.log(filterProductById2(listProduct,254435));
+// console.log(filterProductById2(listProduct,254435));
 
     /**
      * find all product that have have quality > 0 using ES6
@@ -123,9 +123,9 @@ console.log(filterProductById2(listProduct,254435));
      * @return number result
      */
     function totalProduct1 (listProduct){
-        listProduct.reduce((total, currentProduct) => {
-            return !currentProduct.isDelete? total+=1 : total;
-        },0);
+        return listProduct.reduce((total, currentProduct) => 
+             !currentProduct.isDelete? total+=1 : total
+        ,0);
     } 
 // console.log(totalProduct1(listProduct));
 
@@ -154,7 +154,7 @@ console.log(filterProductById2(listProduct,254435));
     function isHaveProductInCategory1 (listProduct, categoryId){
         return listProduct.some(product => product.categoryID == categoryId);
     } 
-// console.log(isHaveProductInCategory1);
+// console.log(isHaveProductInCategory1(listProduct,2));
 
     /** 
      * check if there is product match with given categoryID using for
@@ -182,7 +182,7 @@ console.log(filterProductById2(listProduct,254435));
     function filterProductBySaleDateAndQulity1 (listProduct){
         return listProduct.filter(product => product.saleDate.getTime() > new Date().getTime() && product.quality > 0);
     } 
-// printList(filterProductBySaleDateAndQulity1);
+console.log(filterProductBySaleDateAndQulity1(listProduct));
 
     /** 
      * find all product with saleDate > current time and quality > 0 using ES6
@@ -196,5 +196,5 @@ console.log(filterProductById2(listProduct,254435));
         }
         return result;
     }
-// console.log(filterProductBySaleDateAndQulity1(listProduct));
+console.log(filterProductBySaleDateAndQulity1(listProduct));
 
